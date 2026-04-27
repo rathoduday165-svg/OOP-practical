@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Main {
+
+    // Generic method
+    public static <T> boolean searchElement(LinkedList<T> list, T element) {
+        return list.contains(element);
+    }
+
+    public static void main(String[] args) {
+
+        // Test with Integer (roll numbers)
+        LinkedList<Integer> rollNumbers = new LinkedList<>();
+        rollNumbers.add(101);
+        rollNumbers.add(102);
+        rollNumbers.add(103);
+        rollNumbers.add(104);
+
+        System.out.println("Roll Numbers: " + rollNumbers);
+
+        System.out.println("Search 102: " + searchElement(rollNumbers, 102));
+        System.out.println("Search 110: " + searchElement(rollNumbers, 110));
+
+        // Test with String (names)
+        LinkedList<String> names = new LinkedList<>();
+        names.add("Yashvi");
+        names.add("Riya");
+        names.add("Aarav");
+        names.add("Kunal");
+
+        System.out.println("\nNames: " + names);
+
+        System.out.println("Search 'Riya': " + searchElement(names, "Riya"));
+        System.out.println("Search 'Neha': " + searchElement(names, "Neha"));
+    }
+}
