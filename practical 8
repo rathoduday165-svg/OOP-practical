@@ -1,0 +1,57 @@
+import java.util.Scanner;
+
+class Point {
+    double x, y;
+
+    // Default constructor
+    public Point() {
+        x = 5;
+        y = 5;
+    }
+
+    // Parameterized constructor
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    // Copy constructor
+    public Point(Point p) {
+        this.x = p.x;
+        this.y = p.y;
+    }
+
+    // Display method
+    public void display() {
+        System.out.println("Point (" + x + ", " + y + ")");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Default constructor
+        Point p1 = new Point();
+        System.out.print("Default Constructor: ");
+        p1.display();
+
+        // Parameterized constructor (user input)
+        System.out.print("Enter x: ");
+        double x = sc.nextDouble();
+
+        System.out.print("Enter y: ");
+        double y = sc.nextDouble();
+
+        Point p2 = new Point(x, y);
+        System.out.print("Parameterized Constructor: ");
+        p2.display();
+
+        // Copy constructor
+        Point p3 = new Point(p2);
+        System.out.print("Copy Constructor: ");
+        p3.display();
+
+        sc.close();
+    }
+}
