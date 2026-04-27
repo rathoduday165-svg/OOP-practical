@@ -1,0 +1,58 @@
+import java.util.*;
+
+// Class with synchronized method
+class TablePrinter {
+
+    // Synchronized method
+    public synchronized void printTable(int num) {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                System.out.println("Thread interrupted");
+            }
+        }
+        System.out.println();
+    }
+}
+
+// Thread 1
+class ThreadOne extends Thread {
+    TablePrinter tp;
+
+    public ThreadOne(TablePrinter tp) {
+        this.tp = tp;
+    }
+
+    public void run() {
+        tp.printTable(5);
+    }
+}
+
+// Thread 2
+class ThreadTwo extends Thread {
+    TablePrinter tp;
+
+    public ThreadTwo(TablePrinter tp) {
+        this.tp = tp;
+    }
+
+    public void run() {
+        tp.printTable(7);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+
+        TablePrinter tp = new TablePrinter();
+
+        ThreadOne t1 = new ThreadOne(tp);
+        ThreadTwo t2 = new ThreadTwo(tp);
+
+        t1.start();
+        t2.start();
+    }
+}
