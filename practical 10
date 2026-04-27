@@ -1,0 +1,55 @@
+import java.util.*;
+
+class BankAccount {
+    String account_holder_name;
+    double balance;
+    static double interest_rate;
+
+    // Constructor
+    public BankAccount(String name, double balance) {
+        this.account_holder_name = name;
+        this.balance = balance;
+    }
+
+    // Method to calculate interest
+    public double calculateInterest() {
+        return balance * interest_rate / 100;
+    }
+
+    // Method to display details
+    public void display() {
+        System.out.println("Account Holder: " + account_holder_name);
+        System.out.println("Balance: " + balance);
+        System.out.println("Interest Earned: " + calculateInterest());
+        System.out.println();
+    }
+
+    // Static method to update interest rate
+    public static void updateInterestRate(double rate) {
+        interest_rate = rate;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Set interest rate
+        BankAccount.updateInterestRate(5.0);
+
+        // Create accounts
+        BankAccount acc1 = new BankAccount("Yashvi", 10000);
+        BankAccount acc2 = new BankAccount("Riya", 20000);
+
+        // Display details
+        acc1.display();
+        acc2.display();
+
+        // Update interest rate
+        BankAccount.updateInterestRate(7.0);
+
+        System.out.println("After updating interest rate:\n");
+
+        acc1.display();
+        acc2.display();
+    }
+}
