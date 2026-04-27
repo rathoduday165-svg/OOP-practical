@@ -1,0 +1,54 @@
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
+import javafx.geometry.Pos;
+
+public class Main extends Application {
+
+    @Override
+    public void start(Stage stage) {
+
+        // Base height factor (for scaling)
+        double scale = 3; // 1% = 3 px
+
+        // Create bars
+        VBox projectBar = createBar("Projects — 20%", 20 * scale, Color.RED);
+        VBox quizBar = createBar("Quizzes — 10%", 10 * scale, Color.BLUE);
+        VBox midBar = createBar("Midterm Exams — 30%", 30 * scale, Color.GREEN);
+        VBox finalBar = createBar("Final Exam — 40%", 40 * scale, Color.ORANGE);
+
+        // Arrange bars horizontally
+        HBox root = new HBox(20);
+        root.setAlignment(Pos.BOTTOM_CENTER);
+        root.getChildren().addAll(projectBar, quizBar, midBar, finalBar);
+
+        Scene scene = new Scene(root, 500, 300);
+
+        stage.setTitle("Grade Distribution Bar Chart");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    // Method to create a bar with label
+    private VBox createBar(String labelText, double height, Color color) {
+        Rectangle bar = new Rectangle(50, height);
+        bar.setFill(color);
+
+        Label label = new Label(labelText);
+
+        VBox box = new VBox(5);
+        box.setAlignment(Pos.BOTTOM_CENTER);
+        box.getChildren().addAll(bar, label);
+
+        return box;
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
