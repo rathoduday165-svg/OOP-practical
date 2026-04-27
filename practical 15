@@ -1,0 +1,80 @@
+import java.util.Scanner;
+
+// Base class
+class Employee {
+    String name;
+    String department;
+
+    // Constructor
+    public Employee(String name, String department) {
+        this.name = name;
+        this.department = department;
+    }
+
+    // Method to display details
+    public void displayDetails() {
+        System.out.println("Employee Name: " + name);
+        System.out.println("Department: " + department);
+    }
+}
+
+// Subclass
+class Manager extends Employee {
+    int teamSize;
+    String projectName;
+
+    // Constructor
+    public Manager(String name, String department, int teamSize, String projectName) {
+        super(name, department);
+        this.teamSize = teamSize;
+        this.projectName = projectName;
+    }
+
+    // Overriding method
+    @Override
+    public void displayDetails() {
+        System.out.println("Manager Name: " + name);
+        System.out.println("Department: " + department);
+        System.out.println("Team Size: " + teamSize);
+        System.out.println("Project: " + projectName);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Employee object
+        System.out.print("Enter employee name: ");
+        String ename = sc.nextLine();
+
+        System.out.print("Enter employee department: ");
+        String edept = sc.nextLine();
+
+        Employee emp = new Employee(ename, edept);
+
+        // Manager object
+        System.out.print("\nEnter manager name: ");
+        String mname = sc.nextLine();
+
+        System.out.print("Enter manager department: ");
+        String mdept = sc.nextLine();
+
+        System.out.print("Enter team size: ");
+        int team = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Enter project name: ");
+        String project = sc.nextLine();
+
+        Employee mgr = new Manager(mname, mdept, team, project);
+
+        System.out.println("\n--- Employee Details ---");
+        emp.displayDetails();
+
+        System.out.println("\n--- Manager Details ---");
+        mgr.displayDetails(); // Runtime polymorphism
+
+        sc.close();
+    }
+}
