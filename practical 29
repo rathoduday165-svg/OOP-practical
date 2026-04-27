@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        ArrayList<Integer> marks = new ArrayList<>();
+
+        // Add at least 5 marks
+        marks.add(85);
+        marks.add(90);
+        marks.add(78);
+        marks.add(92);
+        marks.add(88);
+
+        // Display all marks
+        System.out.println("Marks List:");
+        for (int m : marks) {
+            System.out.println(m);
+        }
+
+        // Find highest and lowest marks
+        int max = Collections.max(marks);
+        int min = Collections.min(marks);
+
+        System.out.println("\nHighest Marks: " + max);
+        System.out.println("Lowest Marks: " + min);
+    }
+}
