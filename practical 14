@@ -1,0 +1,100 @@
+import java.util.Scanner;
+
+// Base class
+class BankAccount {
+    int accountNumber;
+    String accountHolderName;
+    double balance;
+
+    // Open account
+    public void openAccount() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Account Number: ");
+        accountNumber = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Enter Account Holder Name: ");
+        accountHolderName = sc.nextLine();
+
+        System.out.print("Enter Initial Balance: ");
+        balance = sc.nextDouble();
+    }
+
+    // Deposit
+    public void deposit(double amount) {
+        balance += amount;
+        System.out.println("Amount deposited: " + amount);
+    }
+
+    // Withdraw
+    public void withdraw(double amount) {
+        if (amount > balance) {
+            System.out.println("Insufficient balance!");
+        } else {
+            balance -= amount;
+            System.out.println("Amount withdrawn: " + amount);
+        }
+    }
+
+    // Check balance
+    public void checkBalance() {
+        System.out.println("Current Balance: " + balance);
+    }
+}
+
+// Saving Account subclass
+class SavingAccount extends BankAccount {
+    double interestRate = 4.0;
+
+    public void calculateInterest() {
+        double interest = balance * interestRate / 100;
+        System.out.println("Savings Interest: " + interest);
+    }
+}
+
+// Fixed Deposit Account subclass
+class FixedDepositAccount extends BankAccount {
+    double interestRate = 6.5;
+    int years;
+
+    public void setYears(int years) {
+        this.years = years;
+    }
+
+    public void calculateInterest() {
+        double interest = (balance * interestRate * years) / 100;
+        System.out.println("Fixed Deposit Interest: " + interest);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Savings Account
+        System.out.println("=== Savings Account ===");
+        SavingAccount sa = new SavingAccount();
+        sa.openAccount();
+
+        sa.deposit(1000);
+        sa.withdraw(500);
+        sa.checkBalance();
+        sa.calculateInterest();
+
+        // Fixed Deposit Account
+        System.out.println("\n=== Fixed Deposit Account ===");
+        FixedDepositAccount fd = new FixedDepositAccount();
+        fd.openAccount();
+
+        System.out.print("Enter number of years: ");
+        int years = sc.nextInt();
+        fd.setYears(years);
+
+        fd.deposit(2000);
+        fd.checkBalance();
+        fd.calculateInterest();
+
+        sc.close();
+    }
+}
