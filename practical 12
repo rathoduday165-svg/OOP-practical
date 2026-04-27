@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+class VolumeCalculator {
+
+    // Cube
+    public double calculateVolume(double side) {
+        return side * side * side;
+    }
+
+    // Rectangular Cube
+    public double calculateVolume(double length, double width, double height) {
+        return length * width * height;
+    }
+
+    // Sphere
+    public double calculateVolume(float radius) {
+        return (4.0 / 3.0) * Math.PI * radius * radius * radius;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        VolumeCalculator vc = new VolumeCalculator();
+
+        // Cube
+        System.out.print("Enter side of cube: ");
+        double side = sc.nextDouble();
+        System.out.println("Volume of Cube: " + vc.calculateVolume(side));
+
+        // Rectangular Cube
+        System.out.print("\nEnter length, width, height of rectangular cube: ");
+        double l = sc.nextDouble();
+        double w = sc.nextDouble();
+        double h = sc.nextDouble();
+        System.out.println("Volume of Rectangular Cube: " + vc.calculateVolume(l, w, h));
+
+        // Sphere
+        System.out.print("\nEnter radius of sphere: ");
+        float r = sc.nextFloat();
+        System.out.println("Volume of Sphere: " + vc.calculateVolume(r));
+
+        sc.close();
+    }
+}
