@@ -1,0 +1,48 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        LinkedList<String> playlist = new LinkedList<>();
+
+        // 1. Add songs
+        playlist.add("Shape of You");
+        playlist.add("Believer");
+        playlist.add("Blinding Lights");
+        playlist.add("Levitating");
+        playlist.add("Perfect");
+
+        System.out.println("Playlist after adding songs:");
+        System.out.println(playlist);
+
+        // 2. Display full playlist
+        System.out.println("\nFull Playlist:");
+        for (String song : playlist) {
+            System.out.println(song);
+        }
+
+        // 3. Play first song (remove from front)
+        if (!playlist.isEmpty()) {
+            String firstSong = playlist.removeFirst();
+            System.out.println("\nNow Playing: " + firstSong);
+        }
+
+        System.out.println("Playlist after playing first song:");
+        System.out.println(playlist);
+
+        // 4. Skip last song (remove from end)
+        if (!playlist.isEmpty()) {
+            String lastSong = playlist.removeLast();
+            System.out.println("\nSkipped Last Song: " + lastSong);
+        }
+
+        System.out.println("Playlist after skipping last song:");
+        System.out.println(playlist);
+
+        // 5. Final updated playlist
+        System.out.println("\nFinal Playlist:");
+        for (String song : playlist) {
+            System.out.println(song);
+        }
+    }
+}
